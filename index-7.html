@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TAP EARN</title>
+<style>
+:root{--o:#ff6a1a;--r:#ff3d2e;--p:#7c4dff;--b:#2f7bff;--bd:rgba(255,255,255,.12);--g:rgba(255,255,255,.04)}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent;user-select:none}
+html,body{height:100%;background:#050505;color:#fff;font-family:"Segoe UI",Inter,system-ui,sans-serif;overflow-x:hidden}
+.bg{position:fixed;inset:0;overflow:hidden;z-index:0}
+.bl{position:absolute;border-radius:48% 52% 60% 40%/50% 40% 60% 50%;filter:blur(14px);animation:fl 26s ease-in-out infinite alternate;opacity:.85}
+.b1{width:70vmax;height:40vmax;top:-18vmax;left:-10vmax;background:radial-gradient(circle at 70% 90%,var(--r),transparent 55%),radial-gradient(circle at 10% 60%,var(--p),transparent 50%);}
+.b2{width:40vmax;height:40vmax;top:-8vmax;right:-20vmax;background:radial-gradient(circle at 30% 80%,var(--b),transparent 60%);animation-delay:-8s}
+.b3{width:60vmax;height:30vmax;bottom:-12vmax;left:-25vmax;background:radial-gradient(circle at 60% 20%,var(--o),transparent 55%);animation-delay:-14s}
+.b4{width:40vmax;height:35vmax;bottom:-14vmax;right:-14vmax;background:radial-gradient(circle at 20% 30%,var(--p),transparent 55%),radial-gradient(circle at 60% 10%,var(--b),transparent 50%);animation-delay:-4s}
+.bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(5,5,5,.55),rgba(5,5,5,.92) 75%)}
+@keyframes fl{to{transform:translate(4vmax,3vmax) rotate(14deg) scale(1.08)}}
+#app{position:relative;z-index:1;min-height:100%;max-width:520px;margin:0 auto;padding:16px 16px 110px}
+.glass{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015));border:1px solid var(--bd);border-radius:22px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 0 24px rgba(255,106,26,.07)}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.pill{display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:99px}
+.av{width:34px;height:34px;border-radius:50%;border:1px solid var(--o);display:grid;place-items:center;color:var(--o);box-shadow:0 0 12px rgba(255,106,26,.5);font-weight:700}
+.ib{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#fff;background:var(--g);border:1px solid var(--bd)}
+svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.o{color:var(--o)}.sm{font-size:11px;letter-spacing:.18em;color:#9a9a9a;text-transform:uppercase}
+h1{font-size:44px;font-weight:200;letter-spacing:.12em;text-align:center}
+h1 b{font-weight:700;background:linear-gradient(90deg,var(--o),var(--r));-webkit-background-clip:text;color:transparent}
+h2{font-size:26px;font-weight:300;letter-spacing:.08em;margin:6px 0 16px}
+.lv{padding:16px 18px;margin-bottom:6px}
+.lv .row{display:flex;justify-content:space-between;align-items:baseline}
+.big{font-size:30px;font-weight:300;letter-spacing:.06em}
+.bar{height:10px;border-radius:9px;background:rgba(255,255,255,.07);overflow:hidden;margin:12px 0 6px;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--b),var(--p),var(--o));box-shadow:0 0 14px var(--o);transition:width .25s cubic-bezier(.2,.9,.3,1);border-radius:9px}
+.stage{position:relative;height:min(62vw,300px);display:grid;place-items:center;margin:4px 0}
+.tapw{position:relative;width:min(52vw,230px);aspect-ratio:1;display:grid;place-items:center}
+.orbit{position:absolute;width:150%;height:56%;border:2px solid rgba(255,106,26,.75);border-radius:50%;transform:rotate(-12deg);box-shadow:0 0 14px rgba(255,106,26,.5);pointer-events:none;animation:ob 9s linear infinite alternate}
+@keyframes ob{to{transform:rotate(-6deg) scale(1.03)}}
+#tap{position:relative;width:100%;height:100%;border-radius:50%;cursor:pointer;border:2px solid var(--o);color:#fff;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.16),rgba(30,12,30,.6) 40%,rgba(5,5,5,.9) 75%);box-shadow:0 0 30px rgba(255,106,26,.6),inset 0 0 30px rgba(255,106,26,.25),inset 0 0 6px rgba(255,255,255,.3);animation:gl 3s ease-in-out infinite;touch-action:manipulation;transition:transform .09s ease-out;outline:0}
+#tap svg{width:42%;height:42%;stroke-width:1.4;filter:drop-shadow(0 0 6px rgba(255,255,255,.4))}
+#tap.dn{transform:scale(.92)}
+#tap.sp{animation:sp .22s cubic-bezier(.3,1.8,.5,1),gl 3s ease-in-out infinite}
+@media(hover:hover){#tap:hover{box-shadow:0 0 46px rgba(255,106,26,.85),inset 0 0 36px rgba(255,106,26,.35)}}
+@keyframes gl{50%{box-shadow:0 0 44px rgba(255,106,26,.85),inset 0 0 36px rgba(255,106,26,.35),inset 0 0 6px #fff}}
+@keyframes sp{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+.rip{position:absolute;inset:0;border-radius:50%;border:2px solid var(--o);pointer-events:none;animation:rp .55s ease-out forwards}
+@keyframes rp{to{transform:scale(1.7);opacity:0}}
+.pulse{position:absolute;inset:-8%;border-radius:50%;background:radial-gradient(circle,rgba(255,106,26,.5),transparent 65%);pointer-events:none;animation:pu .35s ease-out forwards}
+@keyframes pu{from{opacity:1;transform:scale(.8)}to{opacity:0;transform:scale(1.35)}}
+.fl{position:absolute;left:50%;top:10%;font-size:30px;font-weight:700;color:var(--o);text-shadow:0 0 14px var(--o);pointer-events:none;animation:fu .8s ease-out forwards}
+@keyframes fu{from{transform:translate(-50%,0);opacity:1}to{transform:translate(calc(-50% + var(--dx)),-90px);opacity:0}}
+.pt{position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c);pointer-events:none;animation:pt .5s ease-out forwards}
+@keyframes pt{to{transform:translate(var(--x),var(--y));opacity:0}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);padding:14px 4px;margin-top:6px}
+.stats div{text-align:center;border-right:1px solid var(--bd)}.stats div:last-child{border:0}
+.stats b{display:block;font-size:20px;font-weight:500;margin-top:4px}
+.hint{text-align:center;margin-top:14px}
+.cards{display:grid;gap:12px}
+.card{padding:16px;display:flex;align-items:center;gap:14px}
+.card .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;border:1px solid var(--bd);color:var(--o);flex:none}
+.card b{font-weight:500;font-size:18px;display:block}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g2 .card{flex-direction:column;align-items:flex-start;gap:6px}
+.big2{font-size:26px;font-weight:300}
+.lb{display:flex;align-items:center;gap:12px;padding:12px 14px;margin-bottom:8px}
+.lb .rk{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--bd);font-weight:600;flex:none}
+.lb .nm{flex:1;min-width:0}.lb .nm b{font-weight:500;display:block;overflow:hidden;text-overflow:ellipsis}
+.lb .rt{text-align:right}
+.t1 .rk{border-color:#ffd24a;color:#ffd24a;box-shadow:0 0 14px #ffd24a77}.t2 .rk{border-color:#cfd6e4;color:#cfd6e4;box-shadow:0 0 12px #cfd6e455}.t3 .rk{border-color:#ff8a4a;color:#ff8a4a;box-shadow:0 0 12px #ff8a4a55}
+.t1{border-color:#ffd24a66}.t2{border-color:#cfd6e455}.t3{border-color:#ff8a4a55}
+.me{border-color:var(--o)!important;background:linear-gradient(90deg,rgba(255,106,26,.18),rgba(255,255,255,.02));box-shadow:0 0 22px rgba(255,106,26,.3)}
+.rw.lock{opacity:.4;filter:grayscale(.8)}
+.badge{font-size:10px;letter-spacing:.15em;padding:4px 10px;border-radius:99px;border:1px solid var(--o);color:var(--o);margin-left:auto;flex:none}
+.rw.lock .badge{border-color:#666;color:#888}
+.rw.new{animation:nw 1s ease-out}
+@keyframes nw{from{box-shadow:0 0 50px var(--o);transform:scale(1.04)}}
+nav{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(92vw,480px);display:grid;grid-template-columns:repeat(4,1fr);padding:8px;z-index:5;border-radius:26px}
+nav a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0;border-radius:18px;font-size:10px;letter-spacing:.14em;color:#8c8c8c;cursor:pointer;border:1px solid transparent;transition:.2s}
+nav a.on{color:var(--o);border-color:rgba(255,106,26,.5);background:rgba(255,106,26,.08);box-shadow:0 0 16px rgba(255,106,26,.25)}
+@media(min-width:900px){#app{max-width:560px}nav{left:24px;top:50%;bottom:auto;transform:translateY(-50%);width:92px;grid-template-columns:1fr;gap:6px}}
+.auth{min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.auth form{padding:22px;display:grid;gap:12px}
+input{width:100%;padding:14px 16px;border-radius:14px;background:rgba(0,0,0,.4);border:1px solid var(--bd);color:#fff;font-size:16px;outline:0;user-select:text}
+input:focus{border-color:var(--o);box-shadow:0 0 14px rgba(255,106,26,.35)}
+.btn{padding:14px;border-radius:14px;border:1px solid var(--o);background:linear-gradient(135deg,rgba(255,106,26,.28),rgba(124,77,255,.15));color:#fff;font-size:15px;letter-spacing:.14em;cursor:pointer;box-shadow:0 0 18px rgba(255,106,26,.3)}
+.btn:active{transform:scale(.97)}
+.lnk{text-align:center;color:#aaa;font-size:14px;cursor:pointer}.lnk u{color:var(--o)}
+.err{color:#ff6b5e;font-size:13px;text-align:center;min-height:16px}
+.modal{position:fixed;inset:0;z-index:20;background:rgba(3,3,3,.86);backdrop-filter:blur(10px);display:grid;place-items:center;padding:24px;animation:mi .4s ease-out}
+@keyframes mi{from{opacity:0}}
+.mc{text-align:center;max-width:360px;width:100%;padding:34px 24px;animation:mp .55s cubic-bezier(.2,1.4,.4,1);border-color:var(--o);box-shadow:0 0 60px rgba(255,106,26,.35)}
+@keyframes mp{from{transform:scale(.7) translateY(30px);opacity:0}}
+.mc .ring{width:90px;height:90px;margin:0 auto 18px;border-radius:50%;border:2px solid var(--o);display:grid;place-items:center;box-shadow:0 0 30px var(--o),inset 0 0 20px rgba(255,106,26,.4);color:var(--o)}
+.mc .ring svg{width:40px;height:40px}
+.rwd{font-size:34px;font-weight:300;margin:14px 0;color:var(--o);text-shadow:0 0 18px rgba(255,106,26,.6)}
+</style></head><body>
+<div class="bg"><div class="bl b1"></div><div class="bl b2"></div><div class="bl b3"></div><div class="bl b4"></div></div>
+<div id="app"></div>
+<script>
+const LV=[{t:100,v:1,c:100,b:0},{t:400,v:2,c:500,b:0},{t:500,v:2,c:1000,b:50}];
+const IC={tap:'<svg viewBox="0 0 24 24"><path d="M9 11V5a1.5 1.5 0 013 0v5l4 .8a2 2 0 011.6 2L17 17c-.3 2-1.8 3-3.800 3h-1.700c-1.200 0-2-.4-2.700-1.300L6 15.500a1.500 1.500 0 012.300-1.800L9 14.500"/><path d="M5.500 8a4.500 4.500 0 019 0M3 8a7 7 0 0114 0" opacity=".6"/></svg>',
+home:'<svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/></svg>',
+rank:'<svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 01-8 0zM8 6H4c0 3 1 4 4 4M16 6h4c0 3-1 4-4 4M12 13v4M8 20h8"/></svg>',
+user:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>',
+gift:'<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4"/><path d="M5 12v9h14v-9M12 8v13M12 8c-3 0-5-4-2-4 2 0 2 4 2 4zm0 0c3 0 5-4 2-4-2 0-2 4-2 4z"/></svg>',
+snd:'<svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.500 6.500a8 8 0 010 11"/></svg>',
+mute:'<svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM17 9l4 6M21 9l-4 6"/></svg>',
+bolt:'<svg viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg>',
+lock:'<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>',
+star:'<svg viewBox="0 0 24 24"><path d="M12 3l2.800 5.800 6.200.9-4.500 4.400 1 6.200-5.500-3-5.500 3 1-6.200L3 9.700l6.200-.9z"/></svg>',
+out:'<svg viewBox="0 0 24 24"><path d="M9 4H5v16h4M15 8l4 4-4 4M19 12H9"/></svg>'};
+const $=s=>document.querySelector(s),LS=localStorage;
+const J=(k,d)=>{try{return JSON.parse(LS.getItem(k))||d}catch(e){return d}};
+let T=LS.getItem('te_t'),view='home',U=J('te_u',null),snd=LS.getItem('te_snd')!=='0',AC=null,LB=[],dirty=0,busy=0;
+const fmt=n=>Number(n).toLocaleString('en-US');
+const save=()=>{dirty=1;try{LS.setItem('te_u',JSON.stringify(U))}catch(e){}};
+async function api(a,d){try{const r=await fetch('/.netlify/functions/api',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a,t:T,...d})});const j=await r.json().catch(()=>({}));j.ok=r.ok;return j}catch(e){return{ok:false,err:'Server unreachable'}}}
+function logout(){['te_t','te_u','te_role'].forEach(k=>LS.removeItem(k));T=null;U=null;authView('login')}
+// ---- sound ----
+function beep(){if(!snd)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();const t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();o.type='sine';const f=520+Math.random()*120;o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*1.9,t+.07);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.22,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+.14);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+.15)}catch(e){}}
+function fanfare(){if(!snd||!AC)return;[523,659,784,1047].forEach((f,i)=>{const t=AC.currentTime+i*.12,o=AC.createOscillator(),g=AC.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.2,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+.4);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+.45)})}
+// ---- auth ----
+function authView(mode){
+const su=mode==='signup';
+$('#app').innerHTML=`<div class="auth"><h1>TAP <b>EARN</b></h1><p class="sm" style="text-align:center;margin-bottom:10px">${su?'Create your account':'Welcome back'}</p>
+<form class="glass" id="af"><input id="un" placeholder="Username" autocomplete="username" maxlength="16"><input id="pw" type="password" placeholder="Password" autocomplete="${su?'new-password':'current-password'}">${su?'<input id="pc" type="password" placeholder="Confirm Password" autocomplete="new-password">':''}<div class="err" id="er"></div><button class="btn">${su?'CREATE ACCOUNT':'LOG IN'}</button></form>
+<div class="lnk" id="sw">${su?'Already have an account? <u>Log in</u>':'New here? <u>Create account</u>'}</div></div>`;
+$('#sw').onclick=()=>authView(su?'login':'signup');
+$('#af').onsubmit=async e=>{e.preventDefault();const n=$('#un').value.trim(),p=$('#pw').value,er=m=>$('#er').textContent=m;
+if(!n||!p)return er('Enter username and password');
+if(su){if(p.length<4)return er('Password must be at least 4 characters');if(p!==$('#pc').value)return er('Passwords do not match')}
+const bt=$('#af button');bt.disabled=1;er('');const j=await api(su?'signup':'login',{u:n,p,t:null});bt.disabled=0;
+if(!j.ok)return er(j.err||'Error');
+T=j.t;LS.setItem('te_t',T);
+if(j.admin){LS.setItem('te_role','a');return admin()}
+LS.setItem('te_role','u');U=j.user;LS.setItem('te_u',JSON.stringify(U));view='home';start()}}
+function boot(){if(T&&LS.getItem('te_role')==='a')return admin();if(T&&U)return start();authView('signup')}
+function start(){render();sync()}
+async function sync(){
+if(busy||!T||!U)return;busy=1;const send=dirty;dirty=0;
+const j=await api('sync',send?{u:U}:{});busy=0;
+if(!j.ok){if(send)dirty=1;if(j.err==='auth')logout();return}
+LB=j.lb||[];
+if(j.over){U=j.user;LS.setItem('te_u',JSON.stringify(U));if(!document.querySelector('.modal'))render()}
+else if(j.user)U.adm=j.user.adm;
+if(view==='rank'&&!document.querySelector('.modal'))rank(1)}
+async function admin(){
+$('#app').innerHTML=`<div class="top"><div class="glass pill"><div class="av">A</div><div><div class="sm" style="font-size:9px">ADMIN</div>امیرمحمد</div></div><div style="display:flex;gap:8px"><div class="ib" id="rf" style="font-size:20px">↻</div><div class="ib" id="lo">${IC.out}</div></div></div><h2>USERS</h2><input id="q" placeholder="Search" style="margin-bottom:12px"><div id="ul"><p class="sm">Loading…</p></div>`;
+$('#lo').onclick=logout;$('#rf').onclick=admin;
+const j=await api('alist');
+if(!j.ok){if(j.err==='auth')return logout();$('#ul').textContent=j.err||'Error';return}
+const fl=(k,l,v)=>`<label class="sm" style="font-size:9px">${l}<input data-k="${k}" value="${v}" inputmode="numeric" style="padding:9px 10px;font-size:14px;margin-top:3px"></label>`;
+$('#ul').innerHTML=j.users.length?j.users.map(u=>`<div class="glass card" data-n="${u.key}" style="flex-direction:column;align-items:stretch;margin-bottom:10px"><b>${u.name}</b><div class="g2" style="gap:8px">${fl('coins','COINS',u.coins)}${fl('taps','TOTAL TAPS',u.taps)}${fl('lvl','LEVEL (1-4, 4 = finished)',u.lvl+1)}${fl('prog','LEVEL PROGRESS',u.prog)}${fl('bonus','BONUS POINTS',u.bonus)}<label class="sm" style="font-size:9px">NEW PASSWORD<input data-k="pw" placeholder="optional" style="padding:9px 10px;font-size:14px;margin-top:3px"></label></div><div style="display:flex;gap:8px"><button class="btn sv" style="flex:1;padding:10px">SAVE</button><button class="btn dl" style="padding:10px;border-color:var(--r)">DELETE</button></div></div>`).join(''):'<p class="sm">No users yet</p>';
+$('#q').oninput=()=>{const q=$('#q').value.toLowerCase();document.querySelectorAll('#ul [data-n]').forEach(c=>c.style.display=c.dataset.n.includes(q)?'':'none')};
+$('#ul').onclick=async e=>{const c=e.target.closest('[data-n]'),b=e.target.closest('button');if(!c||!b)return;const n=c.dataset.n;
+if(b.classList.contains('dl')){if(!confirm('Delete '+n+'?'))return;const r=await api('adel',{n});if(r.ok)admin();return}
+const f={};c.querySelectorAll('[data-k]').forEach(i=>{f[i.dataset.k]=i.value});f.lvl=(+f.lvl||1)-1;
+b.disabled=1;const r=await api('aset',{n,f});b.disabled=0;b.textContent=r.ok?'SAVED ✓':'ERROR';setTimeout(()=>b.textContent='SAVE',1500)}}
+// ---- app ----
+const lvNow=()=>U.lvl>2?3:U.lvl+1;
+const power=()=>LV[Math.min(U.lvl,2)].v;
+function render(){
+const nv=[['home','HOME','home'],['rank','RANK','rank'],['profile','PROFILE','user'],['rewards','REWARDS','gift']];
+$('#app').innerHTML=`<div class="top"><div class="glass pill"><div class="av">${U.name[0].toUpperCase()}</div><div><div class="sm" style="font-size:9px">PLAYER</div>${U.name}</div></div><div style="display:flex;gap:8px"><div class="ib" id="sb" title="Sound">${snd?IC.snd:IC.mute}</div><div class="ib" id="lo" title="Log out">${IC.out}</div></div></div><div id="pg"></div>
+<nav class="glass">${nv.map(n=>`<a data-v="${n[0]}" class="${view===n[0]?'on':''}">${IC[n[2]]}${n[1]}</a>`).join('')}</nav>`;
+$('#sb').onclick=()=>{snd=!snd;LS.setItem('te_snd',snd?'1':'0');$('#sb').innerHTML=snd?IC.snd:IC.mute;beep()};
+$('#lo').onclick=logout;
+document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>{view=a.dataset.v;render()});
+({home,rank,profile,rewards})[view]()}
+function stats(){return`<div class="glass stats"><div><span class="sm">Coins</span><b id="sc">${fmt(U.coins)}</b></div><div><span class="sm">Taps</span><b id="st">${fmt(U.taps)}</b></div><div><span class="sm">Level</span><b id="sl">${lvNow()>3?3:Math.min(lvNow(),3)}</b></div><div><span class="sm">Power</span><b class="o" id="sp">+${power()}</b></div></div>`}
+function home(){
+const maxed=U.lvl>2,L=LV[Math.min(U.lvl,2)],pr=maxed?L.t:U.prog,pc=Math.floor(pr/L.t*100);
+$('#pg').innerHTML=`<div class="glass lv"><div class="row"><span class="big">LEVEL <span id="ln">${maxed?3:U.lvl+1}</span></span><span class="o" id="pc">${pc}%</span></div><div class="bar"><i id="pb" style="width:${pc}%"></i></div><div class="sm" id="pt">${maxed?'MAX LEVEL · ':''}${pr} / ${L.t}</div></div>
+<div class="stage"><div class="tapw"><div class="orbit"></div><button id="tap" aria-label="Tap">${IC.tap}</button></div></div>
+<p class="sm hint">Tap the core to earn</p><div style="height:14px"></div>${stats()}`;
+const b=$('#tap');let last=0;
+const down=e=>{e.preventDefault();const n=performance.now();if(n-last<40)return;last=n;doTap(b)};
+b.addEventListener('pointerdown',down);
+b.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!e.repeat){e.preventDefault();doTap(b)}});
+b.addEventListener('contextmenu',e=>e.preventDefault())}
+function doTap(b){
+if(document.querySelector('.modal'))return;
+const L=LV[Math.min(U.lvl,2)],maxed=U.lvl>2;
+beep();
+b.classList.remove('sp');b.classList.add('dn');requestAnimationFrame(()=>requestAnimationFrame(()=>{b.classList.remove('dn');void b.offsetWidth;b.classList.add('sp')}));
+fx(b,L.v);
+U.taps++;if(!maxed)U.prog++;
+const pr=maxed?L.t:U.prog,pc=Math.floor(pr/L.t*100);
+$('#pb').style.width=pc+'%';$('#pc').textContent=pc+'%';$('#pt').textContent=(maxed?'MAX LEVEL · ':'')+pr+' / '+L.t;$('#st').textContent=fmt(U.taps);
+if(!maxed&&U.prog>=L.t){complete();}
+save()}
+function fx(b,v){const w=b.parentNode;
+const mk=(c,s)=>{const d=document.createElement('div');d.className=c;if(s)d.style.cssText=s;w.appendChild(d);setTimeout(()=>d.remove(),900);return d};
+mk('rip');mk('pulse');
+const f=mk('fl','--dx:'+(Math.random()*50-25)+'px');f.textContent='+'+v;
+const cs=['#ff6a1a','#ff3d2e','#2f7bff','#7c4dff'];
+for(let i=0;i<8;i++){const a=Math.random()*6.28,r=90+Math.random()*50;mk('pt','--c:'+cs[i%4]+';--x:'+Math.cos(a)*r+'px;--y:'+Math.sin(a)*r+'px')}}
+function complete(){
+const i=U.lvl,L=LV[i];U.coins+=L.c;U.bonus+=L.b;U.rewards.push(i);U.lvl++;U.prog=0;save();sync();
+fanfare();
+const m=document.createElement('div');m.className='modal';m.innerHTML=`<div class="glass mc"><div class="ring">${IC.star}</div><div class="sm">Level ${i+1} complete</div><h2 style="margin:8px 0">LEVEL UP</h2><div class="sm">Reward</div><div class="rwd">+${fmt(L.c)} Coins${L.b?'<br>+'+L.b+' Bonus Points':''}</div><p class="sm" style="margin-bottom:20px">${i<2?'Level '+(i+2)+' unlocked · +'+LV[i+1].v+' per tap':'All levels conquered'}</p><button class="btn" style="width:100%">CONTINUE</button></div>`;
+document.body.appendChild(m);
+m.querySelector('button').onclick=()=>{m.remove();render()}}
+function profile(){
+const done=Math.min(U.rewards.length,3),hi=Math.min(U.lvl+1,3),re=U.rewards.reduce((s,i)=>s+LV[i].c,0),d=new Date(U.created).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+const c=(ic,l,v)=>`<div class="glass card"><div class="ic">${IC[ic]}</div><div><span class="sm">${l}</span><div class="big2">${v}</div></div></div>`;
+$('#pg').innerHTML=`<h2>PROFILE</h2><div class="glass card" style="margin-bottom:12px"><div class="av" style="width:64px;height:64px;font-size:26px">${U.name[0].toUpperCase()}</div><div><b style="font-size:22px">${U.name}</b><span class="sm">Joined ${d}</span></div></div>
+<div class="g2">${c('bolt','Level',lvNow()>3?3:lvNow())}${c('tap','Total Taps',fmt(U.taps))}${c('star','Coins',fmt(U.coins))}${c('bolt','Tap Power','+'+power())}${c('rank','Completed',done+' / 3')}${c('rank','Highest',hi)}</div>
+<h2 style="margin-top:22px">TAP STATISTICS</h2><div class="glass" style="padding:6px 18px">${[['Total taps',fmt(U.taps)],['Current level',lvNow()>3?3:lvNow()],['Best level',hi],['Coins earned',fmt(re)],['Rewards earned',U.rewards.length+(U.bonus?' · '+U.bonus+' bonus pts':'')]].map(r=>`<div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--bd)"><span class="sm" style="align-self:center">${r[0]}</span><b style="font-weight:500">${r[1]}</b></div>`).join('')}</div>`}
+function rank(f){
+if(!f)sync();
+const all=LB.filter(r=>r.name!==U.name).concat([{name:U.name,lv:lvNow()>3?3:lvNow(),taps:U.taps,coins:U.coins,me:1}]).sort((a,b)=>b.taps-a.taps);
+$('#pg').innerHTML=`<h2>LEADERBOARD</h2>`+all.map((r,i)=>`<div class="glass lb ${i<3?'t'+(i+1):''} ${r.me?'me':''}"><div class="rk">${i+1}</div><div class="nm"><b>${r.name}${r.me?' (you)':''}</b><span class="sm">Level ${r.lv}</span></div><div class="rt"><b style="font-weight:500">${fmt(r.taps)}</b><div class="sm">taps</div><div class="o" style="font-size:12px">${fmt(r.coins)} coins</div></div></div>`).join('')}
+function rewards(){
+$('#pg').innerHTML=`<h2>REWARDS</h2><div class="cards">`+LV.map((L,i)=>{const u=U.rewards.includes(i);return`<div class="glass card rw ${u?'':'lock'}"><div class="ic">${u?IC.gift:IC.lock}</div><div><span class="sm">Level ${i+1} reward</span><b>+${fmt(L.c)} Coins</b>${L.b?'<b>+'+L.b+' Bonus Points</b>':''}</div><span class="badge">${u?'UNLOCKED':'LOCKED'}</span></div>`}).join('')+`</div>`}
+document.addEventListener('contextmenu',e=>{if(e.target.closest('#tap'))e.preventDefault()});
+boot();setInterval(sync,8000);
+</script></body></html>
